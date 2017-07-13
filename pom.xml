@@ -15,6 +15,10 @@
 
 		<mule.version>3.8.1</mule.version>
     	<mule.tools.version>1.2</mule.tools.version>
+    	
+    	<!-- This is the domain where the app will be 
+        deployed: i.e. mydomain.cloudhub.io -->
+        <cloudhub.domain>mydomain</cloudhub.domain>
 	</properties>
 
 	<build>
@@ -55,6 +59,34 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			<plugin>
+                 <groupId>org.mule.tools.appkit</groupId>
+                 <artifactId>mule-appkit-maven-plugin</artifactId>
+                 <version>3.4</version>
+                 <extensions>true</extensions>
+                <executions>
+                  <execution>
+                  <!-- This can be changed to any Maven phase -->
+                  <phase>deploy</phase>
+              <goals>
+                <goal>cloudhub-deploy</goal>
+              </goals>
+             <configuration>
+                <!-- Where the app will be deployed -->
+                <domain>${cloudhub.domain}</domain>
+                <!-- Max wait time in millisecs before timeout -->
+                <maxWaitTime>180000</maxWaitTime>
+            </configuration>
+               </execution>
+             </executions>
+          </plugin>
+			
+			
+			
+			
+			
+			
 		</plugins>
 	</build>
 
@@ -144,6 +176,19 @@
                 <enabled>false</enabled>
             </snapshots>
         </pluginRepository>
+        <pluginRepository>
+           <id>mulesoft-releases</id>
+           <name>MuleSoft Release Repository</name>
+           <url>http://repository.mulesoft.org/releases/</url>
+        </pluginRepository>
+        <pluginRepository>
+          <id>mulesoft-snapshots</id>
+          <name>MuleSoft Snapshot Repository</name>
+          <url>http://repository.mulesoft.org/snapshots/</url>
+        </pluginRepository>
+        
+        
+        
     </pluginRepositories>
 
 </project>
