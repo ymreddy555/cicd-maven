@@ -29,24 +29,9 @@
 				<version>${mule.tools.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-                    <copyToAppsDirectory>true</copyToAppsDirectory>
-                    <deploymentType>cloudhub</deploymentType>
-                    <version>${mule.tools.version}</version>
-                    <username>ymreddy</username>
-                    <password>Ritdumdig1</password>
-                    <workerType>Micro</workerType>
-                    <redeploy>true</redeploy>
-                    <environment>SANDBOX</environment>   
+                    <copyToAppsDirectory>true</copyToAppsDirectory> 
 				</configuration>
-				<executions>
-				  <execution>
-				    <id>deploy</id>
-				    <phase>deploy</phase>
-				    <goals>
-				      <goal>deploy</goal>
-				    </goals>
-				  </execution>
-				</executions>
+				
 			</plugin>
 			
 			<plugin>
